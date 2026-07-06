@@ -9,11 +9,7 @@ class GeminiRepositoryImpl implements OllamaRepository {
 
   @override
   Future<List<String>> getAvailableModels() async {
-    return [
-      'gemini-2.0-flash',
-      'gemini-1.5-flash',
-      'gemini-1.5-pro',
-    ];
+    return ['gemini-3.5-flash', 'gemini-2.5-flash'];
   }
 
   @override
@@ -50,9 +46,7 @@ class GeminiRepositoryImpl implements OllamaRepository {
     final chat = genModel.startChat(history: history);
 
     try {
-      final stream = chat.sendMessageStream(
-        Content.text(lastMessage.content),
-      );
+      final stream = chat.sendMessageStream(Content.text(lastMessage.content));
 
       await for (final chunk in stream) {
         if (_cancelled) throw const GenerationCancelledException();
@@ -60,8 +54,14 @@ class GeminiRepositoryImpl implements OllamaRepository {
         if (text != null && text.isNotEmpty) yield text;
       }
     } catch (e) {
-      if (e is GenerationCancelledException) rethrow;
-      throw const GenerationCancelledException();
+      if (e is GenerationCancelledException) {
+        rethrow;
+      } else if (_cancelled) {
+        throw const GenerationCancelledException();
+      } else {
+        // Rethrow the actual error from Gemini API
+        rethrow;
+      }
     }
   }
 

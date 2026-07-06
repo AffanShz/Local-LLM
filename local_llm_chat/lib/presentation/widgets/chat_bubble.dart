@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:highlight/highlight.dart' as highlight;
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:ui';
 
 /// Custom syntax highlighter for code blocks
@@ -154,11 +155,23 @@ class ChatBubble extends StatelessWidget {
                 data: text,
                 selectable: true,
                 syntaxHighlighter: CodeHighlighter(isDark),
+                onTapLink: (text, href, title) async {
+                  if (href != null) {
+                    final uri = Uri.tryParse(href);
+                    if (uri != null && await canLaunchUrl(uri)) {
+                      await launchUrl(uri);
+                    }
+                  }
+                },
                 styleSheet: MarkdownStyleSheet(
                   p: TextStyle(
                     color: isDark ? const Color(0xFFFFEDE5) : const Color(0xFF241914),
                     fontSize: 16,
                     height: 1.5,
+                  ),
+                  a: const TextStyle(
+                    color: Color(0xFFFF8A3D),
+                    decoration: TextDecoration.underline,
                   ),
                   code: TextStyle(
                     fontFamily: 'monospace',
