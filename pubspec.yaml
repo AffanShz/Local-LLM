@@ -1,0 +1,32 @@
+name: local_llm_chat
+description: "A desktop chat application for local LLM using Ollama."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.6.1
+  http: ^1.6.0
+  flutter_markdown: ^0.7.7+1
+  sqflite_common_ffi: ^2.3.7+1
+  path: ^1.9.1
+  uuid: ^4.5.3
+  highlight: ^0.7.0
+  flutter_dotenv: ^5.2.1
+  google_generative_ai: ^0.4.6
+  connectivity_plus: ^6.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
