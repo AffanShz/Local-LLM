@@ -57,6 +57,7 @@ class ModelSelector extends ConsumerWidget {
               isDense: true,
               items: models.map((m) {
                 final isGemini = m.startsWith('gemini-');
+                final isClaude = m.startsWith('claude-');
                 return DropdownMenuItem<String>(
                   value: m,
                   child: Row(
@@ -64,6 +65,9 @@ class ModelSelector extends ConsumerWidget {
                     children: [
                       if (isGemini) ...[
                         const Icon(Icons.cloud_outlined, size: 14, color: Color(0xFF4285F4)),
+                        const SizedBox(width: 4),
+                      ] else if (isClaude) ...[
+                        const Icon(Icons.auto_awesome, size: 14, color: Color(0xFFD97757)),
                         const SizedBox(width: 4),
                       ] else ...[
                         const Icon(Icons.computer_outlined, size: 14, color: Color(0xFFFF8A3D)),
@@ -96,7 +100,7 @@ class _ConnectivityBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Tooltip(
-      message: isOnline ? 'Online — Gemini tersedia' : 'Offline — hanya model lokal',
+      message: isOnline ? 'Online — Gemini & Claude tersedia' : 'Offline — hanya model lokal',
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(

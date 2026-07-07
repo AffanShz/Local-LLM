@@ -141,6 +141,7 @@ class _HomeChatScreenState extends ConsumerState<HomeChatScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final chatAsync = ref.watch(chatProvider);
     final activeId = ref.watch(activeConversationIdProvider);
+    ref.watch(selectedModelSyncProvider);
 
     ref.listen(chatProvider, (_, next) => _scrollToBottom());
 
