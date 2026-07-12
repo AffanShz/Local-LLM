@@ -1,4 +1,4 @@
-# LocalMind — Local LLM Chat Desktop App
+# Orange AI — Local LLM Chat Desktop App
 
 Aplikasi desktop chat untuk LLM lokal menggunakan Ollama. Dibangun dengan Flutter + Riverpod.
 

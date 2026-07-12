@@ -93,16 +93,6 @@ class _ChatInputState extends State<ChatInput> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.attach_file,
-                        color: isDark
-                            ? const Color(0xFFDDC1B3)
-                            : const Color(0xFF564338),
-                      ),
-                      onPressed: () {},
-                      padding: const EdgeInsets.all(12),
-                    ),
                     const SizedBox(width: 8),
                     Expanded(
                       child: KeyboardListener(

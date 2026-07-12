@@ -8,19 +8,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
   runApp(
-    const ProviderScope(child: LocalMindApp()),
+    const ProviderScope(child: OrangeAIApp()),
   );
 }
 
-class LocalMindApp extends ConsumerWidget {
-  const LocalMindApp({super.key});
+class OrangeAIApp extends ConsumerWidget {
+  const OrangeAIApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
 
     return MaterialApp(
-      title: 'LocalMind',
+      title: 'Orange AI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

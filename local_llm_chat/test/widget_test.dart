@@ -5,7 +5,7 @@ import 'package:local_llm_chat/main.dart';
 
 void main() {
   testWidgets('App starts without crashing', (WidgetTester tester) async {
-    await tester.pumpWidget(const ProviderScope(child: LocalMindApp()));
+    await tester.pumpWidget(const ProviderScope(child: OrangeAIApp()));
     expect(find.byType(MaterialApp), findsOneWidget);
   });
 }

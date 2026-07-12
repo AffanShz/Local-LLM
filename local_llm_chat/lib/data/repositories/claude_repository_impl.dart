@@ -23,12 +23,7 @@ class ClaudeRepositoryImpl implements OllamaRepository {
   Future<List<String>> getAvailableModels() async {
     // Models served by the proxy at ANTHROPIC_BASE_URL — adjust when the
     // provider adds/removes models.
-    return [
-      'claude-sonnet-5',
-      'claude-opus-4-7',
-      'claude-sonnet-4-6',
-      'claude-haiku-4-5-20251001',
-    ];
+    return ['claude-sonnet-4-6'];
   }
 
   int _maxTokensFor(String model) {
